@@ -9,14 +9,14 @@ ROLE_ID = int(os.getenv("ROLE_ID", "0"))
 
 #this season dungs
 DUNGEONS = [
-    "Ruby Life Pools",
-    "The Nokhud Offensive",
-    "Azure Vault",
     "Algeth'ar Academy",
-    "Neltharus",
-    "Halls of Infusion",
-    "Uldaman: Legacy of Tyr",
-    "Brackenhide Hollow"
+    "Magister's Terrace",
+    "Maisara Caverns",
+    "Nexus-Point Xenas",
+    "Windrunner Spire",
+    "Pit of Saron",
+    "Seat of the Triumvirate",
+    "Skyreach"
 ]
 
 # modal for key level
