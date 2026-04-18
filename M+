@@ -1,0 +1,39 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+ROLE_ID = 1494790945508425918
+
+class KeyModal(discord.ui.Modal, title="Куди йдем?"):
+    dungeon = discord.ui.TextInput(
+        label="Назва ключа",
+        placeholder="Алгетар/AA"
+    )
+
+    level = discord.ui.TextInput(
+        label="Левел ключа",
+        placeholder="10/weekly або 12,13,14..."
+    )
+
+    async def on_submit(self, interaction: discord.Interaction):
+        embed = discord.Embed(
+            title="🔥 Mythic+ Run",
+            color=discord.Color.purple()
+        )
+        embed.add_field(name="🗺 Dungeon", value=self.dungeon.value, inline=False)
+        embed.add_field(name="🔑 Key Level", value=f"+{self.level.value}", inline=False)
+
+        await interaction.response.send_message(embed=embed)
+
+@bot.tree.command(name="key", description="Create Mythic+ key announce")
+async def key(interaction: discord.Interaction):
+    await interaction.response.send_modal(KeyModal())
+
+@bot.event
+async def on_ready():
+    await bot.tree.sync()
+    print(f"Bot started as {bot.user}")
+
+bot.run("MTQ5NTA1OTI0NjY2MzA3Nzk4OA.GIilrW.AIsJDiqQSatDnHgQOl8J10DBM1Vh8DOoJzM-l8")
